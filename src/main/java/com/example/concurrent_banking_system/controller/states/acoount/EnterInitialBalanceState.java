@@ -1,17 +1,11 @@
 package com.example.concurrent_banking_system.controller.states.acoount;
 
-import com.example.concurrent_banking_system.controller.MenuContext;
 import com.example.concurrent_banking_system.controller.states.AbstractEntryState;
 import com.example.concurrent_banking_system.controller.states.EntryContext;
-import com.example.concurrent_banking_system.controller.states.EntryState;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Scanner;
-
 @Component
-public class EnterInitialBalanceState extends AbstractEntryState<AccountRequestDTO> {
+public class EnterInitialBalanceState extends AbstractEntryState<AccountCreationRequestDTO> {
     final
     ProcessAccountCreation processAccountCreation;
 
@@ -20,13 +14,13 @@ public class EnterInitialBalanceState extends AbstractEntryState<AccountRequestD
     }
 
     @Override
-    public void execute(EntryContext<AccountRequestDTO> entryContext) {
+    public void execute(EntryContext<AccountCreationRequestDTO> entryContext) {
         while (true) {
             System.out.print("Enter initial balance: ");
             try {
                 double balance = Double.parseDouble(scanner.next());
                 validateInitialBalance(balance);
-                AccountRequestDTO accountRequestDTO = entryContext.getContext();
+                AccountCreationRequestDTO accountRequestDTO = entryContext.getContext();
                 accountRequestDTO.setInitBalance(balance);
                 int choice = printMenu();
                 switch (choice) {

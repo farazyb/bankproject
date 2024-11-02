@@ -1,9 +1,11 @@
 package com.example.concurrent_banking_system.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.util.Assert;
 
 @Entity
+@Data
 public class Account {
     @EmbeddedId
     private AccountNumber accountNumber;
@@ -11,6 +13,9 @@ public class Account {
     @Embedded
     @AttributeOverride(name = "balance", column = @Column(name = "balance"))
     private Balance balance;
+
+    @Version
+    private Integer version;
 
 
     public Account(String name, Balance balance) {
@@ -21,7 +26,7 @@ public class Account {
         this.balance = balance;
     }
 
-     Account() {
+    Account() {
 
     }
 
@@ -29,11 +34,4 @@ public class Account {
         return accountNumber.accountNumber().toString();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Balance getBalance() {
-        return balance;
-    }
 }

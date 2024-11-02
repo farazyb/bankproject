@@ -13,10 +13,10 @@ import java.util.List;
 @Component
 public class CreateAccountState extends AbstractMenuState implements EntryMode {
     final EnterNameState enterNameState;
-    final ObjectFactory<EntryContext<AccountRequestDTO>> entryContextObjectFactory;
+    final ObjectFactory<EntryContext<AccountCreationRequestDTO>> entryContextObjectFactory;
     private MenuContext menuContext;
 
-    public CreateAccountState(EnterNameState enterNameState, ObjectFactory<EntryContext<AccountRequestDTO>> entryContextObjectFactory) {
+    public CreateAccountState(EnterNameState enterNameState, ObjectFactory<EntryContext<AccountCreationRequestDTO>> entryContextObjectFactory) {
         this.enterNameState = enterNameState;
         this.entryContextObjectFactory = entryContextObjectFactory;
     }
@@ -49,9 +49,9 @@ public class CreateAccountState extends AbstractMenuState implements EntryMode {
 
     @Override
     public void goToEntryState() {
-        EntryContext<AccountRequestDTO> entryContext = entryContextObjectFactory.getObject();
+        EntryContext<AccountCreationRequestDTO> entryContext = entryContextObjectFactory.getObject();
         menuContext.setState(previousState);
-        entryContext.init(new AccountRequestDTO(),menuContext);
+        entryContext.init(new AccountCreationRequestDTO(),menuContext);
         enterNameState.previous(null);
         entryContext.setState(enterNameState);
         entryContext.execute();

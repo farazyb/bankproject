@@ -1,17 +1,12 @@
 package com.example.concurrent_banking_system.controller.states.acoount;
 
-import com.example.concurrent_banking_system.controller.MenuContext;
 import com.example.concurrent_banking_system.controller.states.AbstractEntryState;
 import com.example.concurrent_banking_system.controller.states.EntryContext;
-import com.example.concurrent_banking_system.controller.states.EntryState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Scanner;
-
 @Component
-public class EnterNameState extends AbstractEntryState<AccountRequestDTO> {
+public class EnterNameState extends AbstractEntryState<AccountCreationRequestDTO> {
     @Autowired
     EnterInitialBalanceState enterInitialBalanceState;
 
@@ -23,7 +18,7 @@ public class EnterNameState extends AbstractEntryState<AccountRequestDTO> {
     }
 
     @Override
-    public void execute(EntryContext<AccountRequestDTO> entryContext) {
+    public void execute(EntryContext<AccountCreationRequestDTO> entryContext) {
         int choice = -1;  // Initialize choice with a default value
         while (true) {
             try {

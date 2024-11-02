@@ -29,7 +29,7 @@ public class MainMenuState extends AbstractMenuState {
 //        System.out.println("2. Transfer Card to Card");
 //        System.out.println("3. Create Account");
 //        System.out.println("4. withdrawal");
-        return new ArrayList<>(List.of("Main Menu:", "1. Check Balance", "2. Transfer Card to Card", "3. Create Account", "4. withdrawal"));
+        return new ArrayList<>(List.of("Main Menu:", "1. Check Balance", "2. Transfer Card to Card", "3. Create Account", "4. withdrawal","5. Deposit"));
     }
 
     @Override
